@@ -1,0 +1,68 @@
+{
+  "config": {
+    "step": {
+      "select_plant": {
+        "title": "Arte Forecast",
+        "description": "Select a compatible plant entity for a new forecast entry.",
+        "data": {
+          "plant_entity": "Plant entity"
+        }
+      },
+      "configure_plant": {
+        "title": "Arte Forecast",
+        "description": "Review and adjust the discovered entities and thresholds for this plant.",
+        "data": {
+          "name": "Name",
+          "soil_moisture_entity": "Soil moisture entity",
+          "min_moisture": "Minimum soil moisture",
+          "max_moisture": "Maximum soil moisture",
+          "humidity_entity": "Humidity entity",
+          "temperature_entity": "Temperature entity",
+          "illuminance_entity": "Illuminance entity",
+          "lookback_hours": "History window (hours)",
+          "update_interval_minutes": "Update interval (minutes)",
+          "reset_threshold": "Watering jump threshold",
+          "humidity_impact": "Humidity impact",
+          "temperature_impact": "Temperature impact",
+          "illuminance_impact": "Illuminance impact"
+        }
+      }
+    },
+    "error": {
+      "invalid_thresholds": "Maximum soil moisture must be greater than minimum soil moisture.",
+      "missing_source": "Configure a soil moisture entity or provide a plant entity.",
+      "missing_thresholds": "Without a plant entity, minimum and maximum soil moisture are required."
+    },
+    "abort": {
+      "already_configured": "This plant is already configured.",
+      "no_compatible_plants": "No compatible plant entities were found."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Arte Forecast options",
+        "data": {
+          "name": "Name",
+          "soil_moisture_entity": "Soil moisture entity",
+          "min_moisture": "Minimum soil moisture",
+          "max_moisture": "Maximum soil moisture",
+          "humidity_entity": "Humidity entity",
+          "temperature_entity": "Temperature entity",
+          "illuminance_entity": "Illuminance entity",
+          "lookback_hours": "History window (hours)",
+          "update_interval_minutes": "Update interval (minutes)",
+          "reset_threshold": "Watering jump threshold",
+          "humidity_impact": "Humidity impact",
+          "temperature_impact": "Temperature impact",
+          "illuminance_impact": "Illuminance impact"
+        }
+      }
+    },
+    "error": {
+      "invalid_thresholds": "Maximum soil moisture must be greater than minimum soil moisture.",
+      "missing_source": "Configure a soil moisture entity or provide a plant entity.",
+      "missing_thresholds": "Without a plant entity, minimum and maximum soil moisture are required."
+    }
+  }
+}
