@@ -2,20 +2,13 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant
+import homeassistant.helpers.config_validation as cv
 
 from .const import DOMAIN, PLATFORMS
 
-if TYPE_CHECKING:
-    from homeassistant.config_entries import ConfigEntry
-    from homeassistant.core import HomeAssistant
-else:
-    try:
-        import homeassistant.helpers.config_validation as cv
-    except ModuleNotFoundError:
-        CONFIG_SCHEMA = None
-    else:
-        CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
+CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
 
 async def async_setup(hass: HomeAssistant, config: dict) -> bool:
