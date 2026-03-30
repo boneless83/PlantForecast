@@ -117,7 +117,8 @@ def _validate_input(user_input: dict[str, Any]) -> dict[str, str]:
     return errors
 
 
-class PlantWateringConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+@config_entries.HANDLERS.register(DOMAIN)
+class PlantWateringConfigFlow(config_entries.ConfigFlow):
     """Handle a config flow for Plant Watering Forecast."""
 
     VERSION = 1
