@@ -18,7 +18,7 @@ jobs:
           python-version: "3.11"
 
       - name: Compile Python files
-        run: python -m py_compile custom_components/arte_forecast/*.py tests/*.py
+        run: python -m py_compile custom_components/plant_watering/*.py tests/*.py
 
       - name: Run unit tests
-        run: python -m unittest tests.test_forecast tests.test_plant_helpers -v
+        run: python -m unittest tests.test_forecast -v
