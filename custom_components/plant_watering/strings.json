@@ -1,0 +1,52 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Plant Watering Forecast",
+        "description": "Select the existing sensors and moisture thresholds for one plant.",
+        "data": {
+          "plant_name": "Plant name",
+          "soil_moisture_entity": "Soil moisture sensor",
+          "temperature_entity": "Temperature sensor",
+          "humidity_entity": "Humidity sensor",
+          "min_moisture": "Minimum moisture (%)",
+          "max_moisture": "Maximum moisture (%)",
+          "lookback_hours": "History window (hours)",
+          "watering_jump": "Watering detection jump (%)",
+          "temperature_factor": "Temperature adjustment factor",
+          "humidity_factor": "Humidity adjustment factor",
+          "warning_days": "Warn when watering is due in this many days"
+        }
+      }
+    },
+    "error": {
+      "invalid_thresholds": "Maximum moisture must be greater than minimum moisture."
+    },
+    "abort": {
+      "already_configured": "This soil moisture sensor is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Plant Watering Forecast options",
+        "data": {
+          "plant_name": "Plant name",
+          "soil_moisture_entity": "Soil moisture sensor",
+          "temperature_entity": "Temperature sensor",
+          "humidity_entity": "Humidity sensor",
+          "min_moisture": "Minimum moisture (%)",
+          "max_moisture": "Maximum moisture (%)",
+          "lookback_hours": "History window (hours)",
+          "watering_jump": "Watering detection jump (%)",
+          "temperature_factor": "Temperature adjustment factor",
+          "humidity_factor": "Humidity adjustment factor",
+          "warning_days": "Warn when watering is due in this many days"
+        }
+      }
+    },
+    "error": {
+      "invalid_thresholds": "Maximum moisture must be greater than minimum moisture."
+    }
+  }
+}

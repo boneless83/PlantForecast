@@ -1,4 +1,4 @@
-"""Binary sensor platform for Arte Forecast."""
+"""Binary sensor platform for Plant Watering Forecast."""
 
 from __future__ import annotations
 
@@ -8,6 +8,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from .const import CONF_WARNING_DAYS
 from .entity import get_coordinator
 
 
@@ -16,28 +17,32 @@ async def async_setup_entry(
     entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up the watering-due binary sensor from a config entry."""
+    """Set up watering due binary sensor."""
 
     coordinator = get_coordinator(hass, entry)
-    async_add_entities([ArteForecastWateringDueBinarySensor(coordinator, entry)])
+    async_add_entities([WateringDueBinarySensor(coordinator, entry)])
 
 
-class ArteForecastWateringDueBinarySensor(CoordinatorEntity, BinarySensorEntity):
-    """Expose whether the plant should be watered now."""
-
-    _attr_should_poll = False
+class WateringDueBinarySensor(CoordinatorEntity, BinarySensorEntity):
+    """Binary sensor that indicates whether watering is due soon."""
 
     def __init__(self, coordinator, entry: ConfigEntry) -> None:
         super().__init__(coordinator)
+        self.entry = entry
         self._attr_name = f"{entry.title} watering due"
         self._attr_unique_id = f"{entry.entry_id}_watering_due"
 
     @property
     def is_on(self) -> bool:
         result = self.coordinator.data
+        config = {**self.entry.data, **self.entry.options}
         if result is None:
             return False
-        return result.status == "watering_due"
+        if result.status == "watering_due":
+            return True
+        if result.days_until_watering is None:
+            return False
+        return result.days_until_watering <= config[CONF_WARNING_DAYS]
 
     @property
     def extra_state_attributes(self) -> dict[str, object]:
@@ -45,11 +50,7 @@ class ArteForecastWateringDueBinarySensor(CoordinatorEntity, BinarySensorEntity)
         if result is None:
             return {}
         return {
+            "days_until_watering": result.days_until_watering,
+            "predicted_watering_at": result.predicted_watering_at,
             "status": result.status,
-            "hours_until_min_moisture": result.hours_until_min,
-            "current_moisture": result.current_moisture,
-            "plant_entity": self.coordinator.plant_entity_id,
-            "resolved_source_entity": self.coordinator.resolved_soil_moisture_entity_id,
-            "resolved_min_moisture": self.coordinator.resolved_min_threshold,
-            "resolved_max_moisture": self.coordinator.resolved_max_threshold,
         }

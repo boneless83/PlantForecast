@@ -1,0 +1,10 @@
+{
+  "domain": "plant_watering",
+  "name": "Plant Watering Forecast",
+  "version": "0.1.0",
+  "config_flow": true,
+  "documentation": "https://github.com/boneless83/PlantForecast",
+  "integration_type": "entity",
+  "requirements": [],
+  "codeowners": []
+}

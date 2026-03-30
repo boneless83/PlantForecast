@@ -1,0 +1,26 @@
+"""Constants for Plant Watering Forecast."""
+
+DOMAIN = "plant_watering"
+PLATFORMS = ["sensor", "binary_sensor"]
+
+CONF_PLANT_NAME = "plant_name"
+CONF_SOIL_MOISTURE_ENTITY = "soil_moisture_entity"
+CONF_TEMPERATURE_ENTITY = "temperature_entity"
+CONF_HUMIDITY_ENTITY = "humidity_entity"
+CONF_MIN_MOISTURE = "min_moisture"
+CONF_MAX_MOISTURE = "max_moisture"
+CONF_LOOKBACK_HOURS = "lookback_hours"
+CONF_WATERING_JUMP = "watering_jump"
+CONF_TEMPERATURE_FACTOR = "temperature_factor"
+CONF_HUMIDITY_FACTOR = "humidity_factor"
+CONF_WARNING_DAYS = "warning_days"
+
+DEFAULT_LOOKBACK_HOURS = 48
+DEFAULT_WATERING_JUMP = 8.0
+DEFAULT_TEMPERATURE_FACTOR = 0.03
+DEFAULT_HUMIDITY_FACTOR = 0.01
+DEFAULT_WARNING_DAYS = 1.5
+DEFAULT_UPDATE_MINUTES = 30
+REFERENCE_TEMPERATURE = 22.0
+REFERENCE_HUMIDITY = 50.0
+MIN_DAILY_LOSS = 0.05

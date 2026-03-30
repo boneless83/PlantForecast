@@ -1,9 +1,0 @@
-{
-  "domain": "arte_forecast",
-  "name": "Arte Forecast",
-  "config_flow": true,
-  "documentation": "https://example.com/arte_forecast",
-  "integration_type": "entity",
-  "requirements": [],
-  "codeowners": []
-}

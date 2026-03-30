@@ -1,4 +1,4 @@
-"""Arte Forecast custom integration."""
+"""Plant Watering Forecast integration."""
 
 from __future__ import annotations
 
@@ -19,13 +19,13 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    """Set up Arte Forecast from a config entry."""
+    """Set up Plant Watering Forecast from a config entry."""
 
-    from .entity import build_coordinator
+    from .coordinator import PlantWateringCoordinator
 
     hass.data.setdefault(DOMAIN, {})
-    coordinator = build_coordinator(hass, entry)
-    await coordinator.async_refresh()
+    coordinator = PlantWateringCoordinator(hass, entry)
+    await coordinator.async_config_entry_first_refresh()
     hass.data[DOMAIN][entry.entry_id] = coordinator
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
