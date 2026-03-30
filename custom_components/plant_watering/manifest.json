@@ -5,6 +5,8 @@
   "config_flow": true,
   "documentation": "https://github.com/boneless83/PlantForecast",
   "integration_type": "entity",
+  "iot_class": "calculated",
+  "dependencies": ["recorder"],
   "requirements": [],
   "codeowners": []
 }
